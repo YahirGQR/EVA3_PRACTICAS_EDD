@@ -17,8 +17,9 @@ public class EVA3_1_ORDENAMIENTOS {
     public static void main(String[] args) {
         
         // Se crean los arreglos el original y se crea la copia
-        int[] arregloDatos = new int[1000000];
+        int[] arregloDatos = new int[20];
         int[] arregloSel = new int[arregloDatos.length];
+        int[] arregloIns = new int[arregloDatos.length];
         // Imprimimos el pimer arreglo(Original)
         System.out.println("ARREGLO ORIGINAL: ");
         llenar(arregloDatos);
@@ -34,6 +35,17 @@ public class EVA3_1_ORDENAMIENTOS {
         double fin = System.nanoTime();
         imprimir(arregloSel);
         System.out.println("Selection Sort: " + (fin - ini));
+        // porbamos el metodo insertion
+        System.out.println("INSERTION SORT: ");
+        copiar(arregloDatos, arregloIns);
+        imprimir(arregloIns);
+        // Se ordena el arreglo copia
+        System.out.println("ARREGLO COPIA ORDENADO: ");
+        ini = System.nanoTime();
+        insertionSort(arregloIns);
+        fin = System.nanoTime();
+        imprimir(arregloIns);
+        System.out.println("Insertion Sort: " + (fin - ini));
         
     }
     
@@ -80,6 +92,24 @@ public class EVA3_1_ORDENAMIENTOS {
                 arreglo[i] = arreglo[min];
                 arreglo[min] = temp;
             }
+        }
+    }
+    public static void insertionSort(int[] arreglo){
+        for (int i = 1; i < arreglo.length; i++) {
+            int temp = arreglo[i]; // es lo que vamos a ordenar
+            int insP = i;
+            // BUSCAMOS EN QUE PUNTO DEBE QUEDAR TEMP
+            // ESA POSICIÓN QUEDA ALMACENADA EN isnP
+            for (int prev = i - 1; prev >= 0; prev--) { // comparamos
+                if(arreglo[prev] > temp){
+                    // swap (intercambio parcial)
+                    arreglo[insP] = arreglo[prev];
+                    insP--;
+                }else{
+                    break;
+                }
+            }
+            arreglo[insP] = temp;
         }
     }
 }
