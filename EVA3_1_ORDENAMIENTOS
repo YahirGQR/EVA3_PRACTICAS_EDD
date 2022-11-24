@@ -20,6 +20,7 @@ public class EVA3_1_ORDENAMIENTOS {
         int[] arregloDatos = new int[20];
         int[] arregloSel = new int[arregloDatos.length];
         int[] arregloIns = new int[arregloDatos.length];
+        int[] arregloQ = new int[arregloDatos.length];
         // Imprimimos el pimer arreglo(Original)
         System.out.println("ARREGLO ORIGINAL: ");
         llenar(arregloDatos);
@@ -46,6 +47,17 @@ public class EVA3_1_ORDENAMIENTOS {
         fin = System.nanoTime();
         imprimir(arregloIns);
         System.out.println("Insertion Sort: " + (fin - ini));
+        
+        System.out.println("QUICK SORT: ");
+        copiar(arregloDatos, arregloQ);
+        imprimir(arregloQ);
+        // Se ordena el arreglo copia
+        System.out.println("ARREGLO COPIA ORDENADO: ");
+        ini = System.nanoTime();
+        quickSort(arregloQ);
+        fin = System.nanoTime();
+        imprimir(arregloQ);
+        System.out.println("Quick Sort: " + (fin - ini));
         
     }
     
@@ -121,21 +133,45 @@ public class EVA3_1_ORDENAMIENTOS {
     
     private static void quickSortRec(int[] arreglo, int ini, int fin){
         // pivote --> posicion
-        for (int i = 0; i < arreglo.length; i++) {
-            
-        }
-        // Dos indices 
+        int pivote, big, small, temp;
+        pivote = ini;
         
-        // ind_grand --> busca los mayores al pivote
+        // Dos indices
+        big = ini;
+        small = fin;
         
-        // ind_peq --> busca los menores al pivote 
-        
-        // si se enuentran valores, se intercambian 
-            
+        if(ini < fin)
+        // Los indices se cruzaron 
+            while(big < small){ 
+                // ind_grand --> busca los mayores al pivote
+                // buscar los elementos mas grandes que el pivote
+                while((arreglo[big] <= arreglo[pivote]) && (big < small)) // buscar los elementos mas grandes que el pivote
+                    big++;
+
+                // ind_peq --> busca los menores al pivote 
+                // buscar los elementos mas pequeños que el pivote
+                while(arreglo[small] > arreglo[pivote])
+                    small--;
+
+                // si se enuentran valores, se intercambian 
+                // VERIFICAMOS QUE NO SE HAYAN CRUZADO LOS INDICES
+                if(big < small){
+                    temp = arreglo[big];
+                    arreglo[big] = arreglo[small];
+                    arreglo[small] = temp;
+                }
+            }
+          
         // si se cruzan, se intercambia el pivote con ind_peq
-        if(ind_peq)
-            ind_peq = pivote;
+             temp = arreglo[pivote];
+             arreglo[pivote] = arreglo[small];
+             arreglo[small] = temp;
+             pivote = small;
+        
+        // LLAMADA RECURSIVA
         // quickSort a cada lado del pivote
-            
+        quickSortRec(arreglo, ini, pivote - 1); 
+        quickSortRec(arreglo, pivote + 1, fin);
+        
     }
 }
