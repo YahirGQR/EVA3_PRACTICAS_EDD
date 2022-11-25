@@ -6,6 +6,7 @@
 package eva3_2_comparator;
 
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
@@ -60,15 +61,16 @@ public class EVA3_2_COMPARATOR {
         listaPersonas.add(new Persona("Hector", "Rodriguez", "Mckarie", 19,1500.0));
         
         // COMAPARATOR: APELLIDO PATERNO
-        Comparator paterno = new Comparator(){
-
-            @Override
-            public int compare(Object o1, Object o2) {
-                
-            }
-            
-        }
         // COMPARATOR: SALARIO
+        
+        // COMO RECORRER UN COLLECTION
+        // ITERATOR
+        
+        for (Iterator<Persona> iterador = listaPersonas.iterator(); 
+            iterador.hasNext();){
+            Persona perso = iterador.next();
+            System.out.println(perso.getNombre());
+        }
         
         
     }
