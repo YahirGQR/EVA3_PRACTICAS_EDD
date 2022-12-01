@@ -92,6 +92,7 @@ public class EVA3_3_BUSQUEDA_BIN {
     public static int busquedaBinaria(int[] datos, int valor){
         return busquedaBinRec(datos, 0, datos.length - 1, valor);
     }
+    // O(long) base 2
     private static int busquedaBinRec(int[] datos, int ini, int fin, int valor){
         int mid = ini+((fin - ini)/2);
         int resu = -1;
