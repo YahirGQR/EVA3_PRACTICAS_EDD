@@ -1,0 +1,108 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package eva3_3_busqueda_bin;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author moviles
+ */
+public class EVA3_3_BUSQUEDA_BIN {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        int[] arregloDatos = new int[20];
+        int[] arregloSel = new int[arregloDatos.length];
+        // Imprimimos el pimer arreglo(Original)
+        System.out.println("ARREGLO ORIGINAL: ");
+        llenar(arregloDatos);
+        imprimir(arregloDatos);
+        // Se imprime para comprobar el segundo arreglo(Copia)
+        System.out.println("SELECTION SORT: ");
+        copiar(arregloDatos, arregloSel);
+        imprimir(arregloSel);
+        // Se ordena el arreglo copia
+        System.out.println("ARREGLO COPIA ORDENADO: ");
+        double ini = System.nanoTime();
+        selectionSort(arregloSel);
+        double fin = System.nanoTime();
+        imprimir(arregloSel);
+        System.out.println("Selection Sort: " + (fin - ini));
+        Scanner input = new Scanner(System.in);
+        System.out.print("Introduce el valor a buscar: ");
+        int buscar = input.nextInt();
+        System.out.println("");
+        System.out.println();
+        System.out.println("El valor esta en " + busquedaBinaria(arregloSel, buscar));
+    }
+    // LLENAR ARREGLO
+    public static void llenar(int[] arreglo){
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo[i] = (int)(Math.random() * 100);
+        }
+    }
+    
+    // IMPRIMIR
+    public static void imprimir(int[] arreglo){
+        for (int i = 0; i < arreglo.length; i++) {
+            if(arreglo[i] < 10)
+                System.out.print("[" + arreglo[i] + "]");
+            else
+                System.out.print("[" + arreglo[i] + "]");
+        }
+        System.out.println("");
+    }
+    
+    // COPIAR ARREGLO
+    public static void copiar(int[] arreglo, int[] copia){
+        for (int i = 0; i < arreglo.length; i++) {
+            copia[i] = arreglo[i]; 
+        }
+    }
+    
+    // SELECTION SORT O(n^2)
+    // COMPARACIONES 
+    // INTERCAMBIOS (SWAP)
+    public static void selectionSort(int[] arreglo){
+        for (int i = 0; i < arreglo.length; i++) {
+            int min = i;
+            // BUSCO EL ELEMENTO (POSICION) MAS PEQUEÑO
+            for (int j = i + 1; j < arreglo.length; j++) {
+                // Buscar el más pequeño
+                if(arreglo[min] > arreglo[j])
+                    min = j;
+            }
+            // SWAP INTERCAMBIAR 
+            if(min != i){
+                int temp = arreglo[i];
+                arreglo[i] = arreglo[min];
+                arreglo[min] = temp;
+            }
+        }
+    }
+    
+    // BUSQUEDA BINARIA          // arreglo con los datos, valor a buscar
+    public static int busquedaBinaria(int[] datos, int valor){
+        return busquedaBinRec(datos, 0, datos.length - 1, valor);
+    }
+    private static int busquedaBinRec(int[] datos, int ini, int fin, int valor){
+        int mid = ini+((fin - ini)/2);
+        int resu = -1;
+        if(ini < fin){ //aquí hacemos la búsqueda recursiva
+            if(valor == datos[mid]) // lo encontramos 
+                resu = mid; // posición donde esta el elemento que buscamos
+            else if(valor < datos[mid]) // menor que la mitadm esta a la izq
+                resu = busquedaBinRec(datos, ini, mid - 1, valor);
+            else // mayor, esta a la derecha
+                resu = busquedaBinRec(datos, mid + 1, fin, valor);
+        }
+        return resu;
+    }
+}
