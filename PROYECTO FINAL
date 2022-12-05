@@ -1,0 +1,73 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package proyecto.ed;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Yahir Quezada
+ */
+public class ProyectoED {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+         int n; 
+         String a;
+        Scanner sc=new Scanner(System.in);  
+        System.out.print("Ingrese el tamaño del arreglo: ");  
+         n=sc.nextInt();   
+         int[] array = new int[n];  
+         System.out.println("Ingrese los elementos del arreglo: "); 
+         List<String> list = new ArrayList<String>();
+                Scanner stdin = new Scanner(System.in); 
+         List<String> listCopia = new ArrayList<String>();       
+                
+        for(int i = 0; i<array.length; i++)  {  
+        list.add(sc.next());  
+        list = listCopia;
+        }
+        
+        System.out.println(list); 
+        System.out.println(listCopia);
+        Collections.sort(listCopia);
+        System.out.println(listCopia);
+        
+        System.out.println("Elemento que desea encontrar");
+        a = sc.next();
+        if(list.contains(a))
+            System.out.println("Elemento encontrado: " + a);
+        else 
+            System.out.println("Elemento no encontrado");
+        
+        System.out.println("Desea eliminarlo? (y/n)");
+            if (stdin.next().startsWith("y")) {
+                list.remove(a);
+            }else{
+                System.out.println("Elemento a eliminar no encontrado");
+            }
+            
+            Collections.sort(listCopia);
+            System.out.println(listCopia);
+            
+         System.out.println("Desea añadir un elemento? (y/n)");
+            if (stdin.next().startsWith("y")) {
+                System.out.println("Ingrese el elemento a añadir: ");
+                list.add(stdin.next());
+            }
+            
+            Collections.sort(listCopia);
+            System.out.println(listCopia);
+            
+        }     
+} 
