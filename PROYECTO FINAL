@@ -24,8 +24,8 @@ public class ProyectoED {
         
          int n; 
          String a;
-        Scanner sc=new Scanner(System.in);  
-        System.out.print("Ingrese el tamaño del arreglo: ");  
+         Scanner sc=new Scanner(System.in);  
+         System.out.print("Ingrese el tamaño del arreglo: ");  
          n=sc.nextInt();   
          int[] array = new int[n];  
          System.out.println("Ingrese los elementos del arreglo: "); 
@@ -60,14 +60,14 @@ public class ProyectoED {
             Collections.sort(listCopia);
             System.out.println(listCopia);
             
-         System.out.println("Desea añadir un elemento? (y/n)");
-            if (stdin.next().startsWith("y")) {
-                System.out.println("Ingrese el elemento a añadir: ");
-                list.add(stdin.next());
+        System.out.println("Desea añadir un elemento? (y/n)");
+           if (stdin.next().startsWith("y")) {
+               System.out.println("Ingrese el elemento a añadir: ");
+               list.add(stdin.next());
             }
             
-            Collections.sort(listCopia);
-            System.out.println(listCopia);
+        Collections.sort(listCopia);
+        System.out.println(listCopia);
             
-        }     
+    }     
 } 
