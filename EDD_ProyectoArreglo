@@ -83,7 +83,7 @@ public class FrmVentana extends javax.swing.JFrame {
         String cadena = "";
         
         for (byte i = 0; i < cont; i++) {
-            cadena = cadena + lista[i];
+            cadena = cadena + lista[i] + "\n";
             txtLista.setText(cadena);
         }
     }
