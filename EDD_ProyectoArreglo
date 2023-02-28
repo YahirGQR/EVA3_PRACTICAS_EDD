@@ -48,6 +48,7 @@ public class FrmVentana extends javax.swing.JFrame {
             }
         });
 
+        txtLista.setEditable(false);
         txtLista.setColumns(20);
         txtLista.setRows(5);
         jScrollPane1.setViewportView(txtLista);
