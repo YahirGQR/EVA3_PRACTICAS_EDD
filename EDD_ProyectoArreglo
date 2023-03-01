@@ -103,6 +103,7 @@ public class FrmVentana extends javax.swing.JFrame {
             lista[cont] = num;
             cont ++;
             imprimirLista();
+            txtLista.append("---- \n   ");
             calcularPromedio();
         }else
             JOptionPane.showMessageDialog(null, "No hay lugar en el arreglo");
@@ -149,3 +150,4 @@ public class FrmVentana extends javax.swing.JFrame {
     private javax.swing.JTextArea txtLista;
     // End of variables declaration                   
 }
+
