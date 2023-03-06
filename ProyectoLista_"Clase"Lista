@@ -1,0 +1,54 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author Yahir Gerardo Quezada Romero
+ * Fecha de creación: 06/Marzo/2023
+ */
+public class Lista {
+// Atributos
+private String lista[];
+private byte numElem, tamaño;
+
+// Metodos
+/* Metodo Constructor: 
+- El método constructor siempre se llama igual que la clase
+- Es el método que inicializa los valores a los atributos 
+- Es el método que mando a llamar para reservar memoria a un objeto
+- Este es el único método que no lleva tipo de valor de retorno
+*/
+
+// Construtor default o por defecto
+public Lista(){
+  numElem = 0;
+  tamaño = 5;
+  lista = new String[tamaño];
+}
+
+public Lista(byte tamaño){
+    numElem = 0;
+    this.tamaño = tamaño;
+    lista = new String[tamaño];
+} 
+
+public byte getNumElem() {
+  return numElem;
+}
+
+public byte getTamaño() {
+  return tamaño;
+}
+
+public void numElem(byte numElem){
+  this.numElem = numElem;
+}
+
+public void setTamaño(byte tamaño) {
+  this.tamaño = tamaño;
+}
+
+}
