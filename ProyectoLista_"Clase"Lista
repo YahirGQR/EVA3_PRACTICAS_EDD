@@ -72,4 +72,13 @@ public String obtenerElementos(){
   return cadena;
 }
 
+public boolean borrarElemento(){
+    
+    if(numElem > 0){
+      numElem--;
+      return true;
+    }else
+       return false;
+}
+
 }
