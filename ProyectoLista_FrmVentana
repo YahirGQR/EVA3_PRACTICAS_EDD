@@ -34,6 +34,7 @@ public class FrmVentana extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaElemento = new javax.swing.JTextArea();
+        btnBorrar = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -51,13 +52,22 @@ public class FrmVentana extends javax.swing.JFrame {
         txaElemento.setRows(5);
         jScrollPane1.setViewportView(txaElemento);
 
+        btnBorrar.setText("BORRAR");
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
-                .addComponent(btnAgregar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnBorrar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -67,7 +77,9 @@ public class FrmVentana extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(btnAgregar)
-                .addGap(150, 150, 150))
+                .addGap(36, 36, 36)
+                .addComponent(btnBorrar)
+                .addGap(85, 85, 85))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1)
@@ -88,6 +100,14 @@ public class FrmVentana extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(this, "No se mostro");
         
     }                                          
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        if(l.borrarElemento()){
+          JOptionPane.showMessageDialog(this, "Se borro el elemento correctamente");
+          txaElemento.setText(l.obtenerElementos());
+        }else
+          JOptionPane.showMessageDialog(this, "No existen elementos para borrar");
+    }                                         
 
     /**
      * @param args the command line arguments
@@ -126,6 +146,7 @@ public class FrmVentana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify                     
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txaElemento;
